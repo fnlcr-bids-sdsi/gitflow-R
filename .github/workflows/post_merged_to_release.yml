@@ -114,6 +114,26 @@ jobs:
 
           echo "$CONFIG_TOML" >> pyproject.toml
 
+          echo "" >> "$CONFIG_FILE"
+          echo "[tool.semantic_release.commit_parser_options]" >> "$CONFIG_FILE"
+          echo "allowed_tags = [" >> "$CONFIG_FILE"
+          echo "    \"build\"," >> "$CONFIG_FILE"
+          echo "    \"chore\"," >> "$CONFIG_FILE"
+          echo "    \"ci\"," >> "$CONFIG_FILE"
+          echo "    \"docs\"," >> "$CONFIG_FILE"
+          echo "    \"step\"," >> "$CONFIG_FILE"
+          echo "    \"feat\"," >> "$CONFIG_FILE"
+          echo "    \"fix\"," >> "$CONFIG_FILE"
+          echo "    \"perf\"," >> "$CONFIG_FILE"
+          echo "    \"style\"," >> "$CONFIG_FILE"
+          echo "    \"refactor\"," >> "$CONFIG_FILE"
+          echo "    \"test\"," >> "$CONFIG_FILE"
+          echo "]" >> "$CONFIG_FILE"
+          echo "minor_tags = [\"step\"]" >> "$CONFIG_FILE"
+          echo "patch_tags = [\"fix\", \"perf\", \"feat\", \"docs\", \"refactor\"]" >> "$CONFIG_FILE"
+
+          echo "Configuration added to $CONFIG_FILE"
+
           cat $CONFIG_FILE
 
           echo "Branches starting with 'release' are included in the release group."
